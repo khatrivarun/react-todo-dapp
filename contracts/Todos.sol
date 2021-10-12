@@ -17,12 +17,6 @@ contract Todos {
   }
 
   function getTodos() public view returns (Todo[] memory) {
-    Todo[] memory tempTodos = new Todo[](length - 1);
-
-    for (uint256 i = 0; i < length - 1; i++) {
-      tempTodos[i] = todos[i];
-    }
-
     return todos;
   }
 
