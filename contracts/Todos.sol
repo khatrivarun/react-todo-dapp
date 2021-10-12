@@ -17,20 +17,17 @@ contract Todos {
   }
 
   function getTodos() public view returns (Todo[] memory) {
+    Todo[] memory tempTodos = new Todo[](length - 1);
+
+    for (uint256 i = 0; i < length - 1; i++) {
+      tempTodos[i] = todos[i];
+    }
+
     return todos;
   }
 
   function addTodo(string memory _text) public {
     todos.push(Todo({ id: length, text: _text }));
     length++;
-  }
-
-  function removeTodo(uint256 _id) public {
-    for (uint256 i = _id; i < todos.length - 1; i++) {
-      todos[i] = todos[i + 1];
-    }
-
-    delete todos[todos.length - 1];
-    length--;
   }
 }
